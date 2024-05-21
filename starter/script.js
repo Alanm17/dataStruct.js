@@ -1,8 +1,6 @@
 'use strict';
 
 // Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
 const restaurant = {
@@ -11,19 +9,35 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
+  valueStruct(menuIndex, starterIndex) {
+    return [this.mainMenu[menuIndex], this.starterMenu[starterIndex]];
   },
 };
+
+const arr = [2, 3, 4]; // destructuring does not effect to the original array
+let [x, v, z] = arr; /// destructuring the array and we have to declare variables using ""const""
+console.log(x, v, z);
+x, v, (z = [1, 2, 3]);
+console.log(x, v, z);
+
+let [firstS, , , secondS] = restaurant.categories;
+console.log(firstS, secondS); // in this this comma ,, ⬆️ changes the order of values to be taken
+//switching variables
+// const temp = firstS;
+// firstS = secondS;
+// secondS = temp;
+
+let [firstSs, secondSs] = [secondS, firstS];
+console.log(firstS, secondS);
+
+const [choco, shashlik] = restaurant.valueStruct(1, 2); // taking the value inside variables using method inside object and destructing them to different variables
+console.log(choco, shashlik); // choco =pasta , shashlik = garlic bread
+
+// nested destructuring
+const nestedArray = [1, 2, [1, 3]];
+const [i, , [o, b]] = nestedArray;
+console.log(i, o, b);
+
+// default values
+const [d, l, m = 1, f] = [5, 6, 3, 3];
+console.log(d, l, m, f);
