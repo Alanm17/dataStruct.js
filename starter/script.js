@@ -133,3 +133,15 @@ const copiedRestaurant = { ...restaurant };
 copiedRestaurant.name = 'Italy';
 console.log(copiedRestaurant);
 console.log(restaurant);
+
+const copieddRestaurant = restaurant;
+
+copieddRestaurant.name = 'Alan';
+console.log(restaurant);
+
+const spreadOp = [1, 2, 3, 4];
+console.log(spreadOp);
+
+//rest operator is used in the opposite site and used to take the rest value or whole.
+const [...others] = [34, 21, 34, 90, 2003];
+console.log(...others);
