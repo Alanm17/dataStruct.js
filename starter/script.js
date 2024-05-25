@@ -115,9 +115,21 @@ const languageFunction = [{ ...restaurant.orderDelivery({}) }];
 console.log(languageFunction);
 
 const ingredients = [
-  prompt("let's find out what you want inside your pizza! ingredient 1 ?"),
-  prompt('ingredient 2 ?  '),
-  prompt('ingredient 3 ?'),
+  // prompt("let's find out what you want inside your pizza! ingredient 1 ?"),
+  // prompt('ingredient 2 ?  '),
+  // prompt('ingredient 3 ?'),
 ];
 
 restaurant.orderPizza(...ingredients);
+
+const str = 'Alan';
+const arrDivide = [...str];
+console.log(arrDivide);
+// if we wanna add new properties inside object👇 with spread operator
+const newRestaurant = { foundIn: 2001, ...restaurant, paid: 2000 };
+console.log(newRestaurant);
+
+const copiedRestaurant = { ...restaurant };
+copiedRestaurant.name = 'Italy';
+console.log(copiedRestaurant);
+console.log(restaurant);
