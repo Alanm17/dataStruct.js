@@ -143,5 +143,5 @@ const spreadOp = [1, 2, 3, 4];
 console.log(spreadOp);
 
 //rest operator is used in the opposite site and used to take the rest value or whole.
-const [...others] = [34, 21, 34, 90, 2003];
-console.log(...others);
+const [aa, bb, ...others] = [34, 21, 34, 90, 2003];
+console.log(aa, bb, aa, bb, ...others, aa, bb, ...others);
