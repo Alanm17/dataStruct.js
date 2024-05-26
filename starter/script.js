@@ -65,6 +65,10 @@ const restaurant = {
   orderPizza: function (in1, in2, in3) {
     console.log(`here is your order with ${in1},${in2} and ${in3}`);
   },
+  orderBurger: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 restaurant.orderDelivery({
   address: 'new york 13 avenue',
@@ -151,7 +155,13 @@ const { fri, ...reNaming } = restaurant.openingHours;
 console.log({ reNaming });
 
 const add = function (...others) {
-  console.log(others);
+  let sum = 0;
+  for (let i = 0; i < others.length; i++) sum += others[i];
+  console.log(sum);
 };
 
+add(9, 4, 2, 1, 3);
 add(9, 4, 2, 5, 3);
+add(9, 4, 2, 5, 3);
+
+restaurant.orderBurger('cheeseburger', 'garlic', 'mayo', 'cheese', 'meat');
