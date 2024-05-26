@@ -145,3 +145,13 @@ console.log(spreadOp);
 //rest operator is used in the opposite site and used to take the rest value or whole.
 const [aa, bb, ...others] = [34, 21, 34, 90, 2003];
 console.log(aa, bb, aa, bb, ...others, aa, bb, ...others);
+
+// rest operator should always come at the end in array
+const { fri, ...reNaming } = restaurant.openingHours;
+console.log({ reNaming });
+
+const add = function (...others) {
+  console.log(others);
+};
+
+add(9, 4, 2, 5, 3);
