@@ -260,24 +260,28 @@
 
 // qiyinEkan(3434, 23787999999);
 
-const qiyinEkan = function (a, b) {
-  a = 'Alan';
-  b = 'Jenny';
-  if (
-    (a == 'A', 'l', 'a', 'n' || b == 'A', 'l', 'a', 'n') ||
-    (b == 'J', 'e', 'n', 'n', 'y' || a == 'J', 'e', 'n', 'n', 'y')
-  ) {
-    console.log('sasa');
-  } else if (
-    a === a.length ||
-    b === a.length ||
-    a === b.length ||
-    b === b.length
-  ) {
-    console.log('asas');
-  } else {
-    console.log('false');
-  }
-};
+//&&&&&&&&&&&&&&&&&&&&&&&*short-circuiting*||||||||||||||||||||||||||||||||||
+// In JavaScript, short-circuiting is the evaluation of an expression from left to right with || and && operators. If the condition is met and the rest of the conditions won't affect the already evaluated result, the expression will short-circuit and return that result (value).
 
-qiyinEkan('lanAaa', 'yennJs');
+// flasy values==================================
+
+// false:
+// 0:
+// -0:
+// NaN: .
+// null:
+// undefined:
+// "":
+// null and undefined: When coerced to a boolean context (like in an if statement), they both evaluate to false.
+
+console.log('------or------'); // or operator takes the tuthy value or when two truthy values are entered it takes the first truthy one because it checks from left to right but takes the first one
+const restaurant = {};
+restaurant.GuestNumer = 0;
+const checks = restaurant.GuestNumer || 10;
+console.log(checks);
+/// they are different and do totally the opposite to each other
+console.log('---- and ----'); // and operator takes the falsy value or when two truthy values are entered it takes the last truthy one because it checks from left to right
+const restaurantt = {};
+restaurantt.GuestNumer = 0;
+const checkss = restaurant.GuestNumer && 10;
+console.log(checkss);
