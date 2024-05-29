@@ -307,7 +307,7 @@
 // */
 
 const game = {
-  team1: 'Bayern Munich',
+  team1: ['Bayern Munich', 'man', 'sdsd'],
   team2: 'Borrussia Dortmund',
   players: [
     [
@@ -382,3 +382,8 @@ document.querySelector('.clicker').addEventListener('click', function () {
   const answer = document.querySelector('.number').value;
   datas = addMyvalue(answer);
 });
+//for of statement loops through the values of an iterable object. It lets you loop over iterable data structures such as Arrays, Strings, Maps,
+const menu = [...game.team1, ...game.team2];
+for (const item of menu) console.log(item);
+
+for (const ds of game.team2) console.log(ds);
