@@ -378,7 +378,7 @@ const addMyvalue = function (addHere) {
   console.log(theTaken);
 };
 let datas;
-const answer = (document.querySelector('.number').value = 3);
 document.querySelector('.clicker').addEventListener('click', function () {
+  const answer = document.querySelector('.number').value;
   datas = addMyvalue(answer);
 });
