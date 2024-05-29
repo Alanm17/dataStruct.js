@@ -346,26 +346,39 @@ const game = {
     team2: 6.5,
   },
 };
-const [player1, player2] = game.players;
+const [player1, player2] = game.players; // destructing
 
 const [gk, ...fieldPlayer] = player1; /// using rest operator to copy the array and leaving th first value and copying the rest
 console.log(fieldPlayer, gk);
-const [allPlayers] = [...player1, ...player2];
+const [allPlayers] = [...player1, ...player2]; // destructing using spread operator
 console.log(allPlayers);
-const player1final = [...player1, 'Thiago', 'Coutinho', 'Perisic'];
+const player1final = [...player1, 'Thiago', 'Coutinho', 'Perisic']; // adding 3 more players to the array
 console.log(player1final);
 
 const {
   odds: { team1, x: draw, team2 },
-} = game;
+} = game; // destructing and also naming a x variable in an unsual way
 console.log(team1, draw, team2);
 
 const printGoals = function (...players) {
+  /// function shows players who scored
   console.log(players);
   console.log(`${players.length} goals were scored`);
 };
-printGoals(...game.scored);
-
+printGoals(...game.scored); // using  rest oporator to get the player names out of array
+printGoals(game.scored); // calling the array only
 //7
+// using logical operator to know which is higher and more likly to win and with the help of and && operator we are making the decision making process
 team1 < team2 && console.log('team 1 is about to win');
 team1 > team2 && console.log('team 2 is about to win');
+/// so here && operator as you know takes the falsy value or if two truthy comes , it takes the last truthy no matter which is bigger but with logical operator we used false or true method like "if higher do this "
+let theTaken = 0;
+const addMyvalue = function (addHere) {
+  theTaken += Number(addHere);
+  console.log(theTaken);
+};
+let datas;
+const answer = (document.querySelector('.number').value = 3);
+document.querySelector('.clicker').addEventListener('click', function () {
+  datas = addMyvalue(answer);
+});
