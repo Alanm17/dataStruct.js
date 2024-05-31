@@ -47,8 +47,51 @@ console.log(fri, sat);
 
 // Optional Chaining
 console.log(restaurant.openingHours.fri?.close); // so in here , by using optional chaining ,we are requesting from javascript to check wether the property exists . if yes , it logs the chosen value if not shows undefined
+// =====================================================================================
+// simple looping style using Optional Chaining ES11
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (let i = 0; i < days.length; i++) {
+  const open = restaurant.openingHours[days[i]]?.open || 'closed'; // setting default text if there are no info about opening hours on given days
+  console.log(`on ${days[i]} , we open at ${open}`);
+}
+// Looping same thing using for_of loop ES6
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed'; // i used
+  console.log(`on ${day} , we open at ${open}`);
+}
 
-const arr = [2, 3, 4]; // destructuring does not effect to the original array [const]
+const user = [{ Name: 'Alan', email: 'kholdarovvv@gmail.com' }];
+console.log(user[0] && `yes  it is availble`);
+
+const users = [{ Name: 'Alan', email: 'kholdarovvv@gmail.com' }];
+
+for (const user of users) {
+  if (user[0]) {
+    console.log(`Name of user: ${user.Name}`); // Output: Name of user: Alan
+  }
+  console.log(user.Name);
+}
+console.log(user.Name);
+
+// if (restaurant.orderPizza) {
+//   console.log('exists');
+// }
+// restaurant.orderPizza &&
+//   restaurant.orderPizza('mushrooms', 'spinach', 'drinks');
+// const array = [1, 2, 3, 4, 5];
+restaurant.openingHours.fri && console.log(days);
+// for (const element of array) {
+//   console.log(element);
+// }
+
+// Output:
+// 1
+// 2
+// 3
+// 4
+// 5
+// =====================================================================================
+// const arr = [2, 3, 4]; // destructuring does not effect to the original array [const]
 // // let [x, v, z] = arr; /// destructuring the array and we have to declare variables using ""const""
 // // console.log(x, v, z);
 // // x, v, (z = [1, 2, 3]);
