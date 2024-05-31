@@ -1,5 +1,54 @@
 'use strict';
-// const arr = [2, 3, 4]; // destructuring does not effect to the original array [const]
+const openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours,
+  arrayStruct(menuIndex, starterIndex) {
+    return [this.mainMenu[menuIndex], this.starterMenu[starterIndex]];
+  },
+  orderDelivery: function ({
+    address = 'address',
+    time = 'an hour',
+    menuIndex,
+    starterIndex,
+  }) {
+    console.log(
+      `Order ${this.starterMenu[starterIndex]} and ${this.mainMenu[menuIndex]} have been delivered to ${address} at ${time}`
+    );
+  },
+  orderPizza: function (in1, in2, in3) {
+    console.log(`here is your order with ${in1},${in2} and ${in3}`);
+  },
+  orderBurger: function (mainIngredient, ...otherIngredients) {
+    console.log(`chosen: ${mainIngredient}`);
+    console.log(`upgrades: ${otherIngredients}`);
+  },
+};
+const { fri, sat } = restaurant.openingHours;
+console.log(fri, sat);
+
+// Optional Chaining
+console.log(restaurant.openingHours.fri?.close); // so in here , by using optional chaining ,we are requesting from javascript to check wether the property exists . if yes , it logs the chosen value if not shows undefined
+
+const arr = [2, 3, 4]; // destructuring does not effect to the original array [const]
 // // let [x, v, z] = arr; /// destructuring the array and we have to declare variables using ""const""
 // // console.log(x, v, z);
 // // x, v, (z = [1, 2, 3]);
@@ -7,21 +56,24 @@
 
 // // let [firstS, , , secondS] = restaurant.categories;
 // // console.log(firstS, secondS); // in this this comma ,, ⬆️ changes the order of values to be taken
-// // //switching variables
-// // // const temp = firstS;
-// // // firstS = secondS;
-// // // secondS = temp;
+// // switching variables
+// // // // const temp = firstS;
+// // // // firstS = secondS;
+// // secondS = temp;
 
-// // let [firstSs, secondSs] = [secondS, firstS];
-// // console.log(firstS, secondS);
+// let [firstSs, secondSs] = [secondS, firstS];
+// console.log(firstS, secondS);
 
-// // const [choco, shashlik] = restaurant.valueStruct(1, 2); // taking the value inside variables using method inside object and destructing them to different variables
-// // console.log(choco, shashlik); // choco =pasta , shashlik = garlic bread
+// const [choco, shashlik] = restaurant.valueStruct(1, 2); // taking the value inside variables using method inside object and destructing them to different variables
+// console.log(choco, shashlik); // choco =pasta , shashlik = garlic bread
 
-// // // nested destructuring
-// // const nestedArray = [1, 2, [1, 3]];
-// // const [i, , [o, b]] = nestedArray;
-// // console.log(i, o, b);
+// // nested destructuring
+// const nestedArray = [1, 2, [1, 3]];
+// const [i, , [o, d]] = nestedArray;
+// console.log(i, o, d);
+
+// [fri, sat] = restaurant.openingHours;
+// console.log(fri, sat);
 
 // // // default values
 // // const [d, l, m = 1, f] = [5, 6, 3, 3];
@@ -29,47 +81,6 @@
 // // Data needed for a later exercise
 
 // // Data needed for first part of the section
-// const restaurant = {
-//   name: 'Classico Italiano',
-//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
-//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-//   openingHours: {
-//     thu: {
-//       open: 12,
-//       close: 22,
-//     },
-//     fri: {
-//       open: 11,
-//       close: 23,
-//     },
-//     sat: {
-//       open: 0, // Open 24 hours
-//       close: 24,
-//     },
-//   },
-//   arrayStruct(menuIndex, starterIndex) {
-//     return [this.mainMenu[menuIndex], this.starterMenu[starterIndex]];
-//   },
-//   orderDelivery: function ({
-//     address = 'address',
-//     time = 'an hour',
-//     menuIndex,
-//     starterIndex,
-//   }) {
-//     console.log(
-//       `Order ${this.starterMenu[starterIndex]} and ${this.mainMenu[menuIndex]} have been delivered to ${address} at ${time}`
-//     );
-//   },
-//   orderPizza: function (in1, in2, in3) {
-//     console.log(`here is your order with ${in1},${in2} and ${in3}`);
-//   },
-//   orderBurger: function (mainIngredient, ...otherIngredients) {
-//     console.log(`chosen: ${mainIngredient}`);
-//     console.log(`upgrades: ${otherIngredients}`);
-//   },
-// };
 // restaurant.orderDelivery({
 //   address: 'new york 13 avenue',
 //   time: '23:21',
@@ -82,14 +93,14 @@
 //   starterIndex: 3,
 // });
 // // destructing objects . in this method ,we are just destructing restaurant properties with the same variables outside of the object literal .
-// const { name, categories, openingHours } = restaurant;
+// const { name, categories, openingHourss } = restaurant;
 // console.log(name, categories, openingHours); // Classico .. italian..,thu...
 
 // // direct destructing with renaming technique
 // const { name: nameOf, categories: tags, openingHours: hours } = restaurant;
 // console.log(nameOf, tags, hours); // Classico .. italian..,thu...
 // // destructing property to a variable and setting it to default value using [] square brackets
-// const { menu = [], starterMenu: starter = [] } = restaurant;
+// const { menus = [], starterMenu: starter = [] } = restaurant;
 // console.log(starter, menu);
 // // mutating variables
 // let a = 111;
@@ -100,9 +111,9 @@
 
 // //Nested objects
 // const {
-//   fri: { open: o, close: p },
+//   fri: { open: k, close: p },
 // } = openingHours;
-// console.log(o, p);
+// console.log(k, p);
 
 // const newArray = [8, 2, 1, 3, 12];
 // const badNewArray = [2, 3, newArray[0], newArray[1], newArray[2]];
@@ -303,87 +314,87 @@
 // const cheecks = restaurannts.GuestsNumer ?? 10;
 // console.log(cheecks);
 
-// GOOD LUCK 😀
-// */
+// // GOOD LUCK 😀
+// // */
 
-const game = {
-  team1: ['Bayern Munich', 'man', 'sdsd'],
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
-const [player1, player2] = game.players; // destructing
+// const game = {
+//   team1: ['Bayern Munich', 'man', 'sdsd'],
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+// const [player1, player2] = game.players; // destructing
 
-const [gk, ...fieldPlayer] = player1; /// using rest operator to copy the array and leaving th first value and copying the rest
-console.log(fieldPlayer, gk);
-const [allPlayers] = [...player1, ...player2]; // destructing using spread operator
-console.log(allPlayers);
-const player1final = [...player1, 'Thiago', 'Coutinho', 'Perisic']; // adding 3 more players to the array
-console.log(player1final);
+// const [gk, ...fieldPlayer] = player1; /// using rest operator to copy the array and leaving th first value and copying the rest
+// console.log(fieldPlayer, gk);
+// const [allPlayers] = [...player1, ...player2]; // destructing using spread operator
+// console.log(allPlayers);
+// const player1final = [...player1, 'Thiago', 'Coutinho', 'Perisic']; // adding 3 more players to the array
+// console.log(player1final);
 
-const {
-  odds: { team1, x: draw, team2 },
-} = game; // destructing and also naming a x variable in an unsual way
-console.log(team1, draw, team2);
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game; // destructing and also naming a x variable in an unsual way
+// console.log(team1, draw, team2);
 
-const printGoals = function (...players) {
-  /// function shows players who scored
-  console.log(players);
-  console.log(`${players.length} goals were scored`);
-};
-printGoals(...game.scored); // using  rest oporator to get the player names out of array
-printGoals(game.scored); // calling the array only
-//7
-// using logical operator to know which is higher and more likly to win and with the help of and && operator we are making the decision making process
-team1 < team2 && console.log('team 1 is about to win');
-team1 > team2 && console.log('team 2 is about to win');
-/// so here && operator as you know takes the falsy value or if two truthy comes , it takes the last truthy no matter which is bigger but with logical operator we used false or true method like "if higher do this "
-let theTaken = 0;
-const addMyvalue = function (addHere) {
-  theTaken += Number(addHere);
-  console.log(theTaken);
-};
-let datas;
-document.querySelector('.clicker').addEventListener('click', function () {
-  const answer = document.querySelector('.number').value;
-  datas = addMyvalue(answer);
-});
-//for of statement loops through the values of an iterable object. It lets you loop over iterable data structures such as Arrays, Strings, Maps,
-const menu = [...game.team1, ...game.team2];
-for (const item of menu) console.log(item);
+// const printGoals = function (...players) {
+//   /// function shows players who scored
+//   console.log(players);
+//   console.log(`${players.length} goals were scored`);
+// };
+// printGoals(...game.scored); // using  rest oporator to get the player names out of array
+// printGoals(game.scored); // calling the array only
+// //7
+// // using logical operator to know which is higher and more likly to win and with the help of and && operator we are making the decision making process
+// team1 < team2 && console.log('team 1 is about to win');
+// team1 > team2 && console.log('team 2 is about to win');
+// /// so here && operator as you know takes the falsy value or if two truthy comes , it takes the last truthy no matter which is bigger but with logical operator we used false or true method like "if higher do this "
+// let theTaken = 0;
+// const addMyvalue = function (addHere) {
+//   theTaken += Number(addHere);
+//   console.log(theTaken);
+// };
+// let datas;
+// document.querySelector('.clicker').addEventListener('click', function () {
+//   const answer = document.querySelector('.number').value;
+//   datas = addMyvalue(answer);
+// });
+// //for of statement loops through the values of an iterable object. It lets you loop over iterable data structures such as Arrays, Strings, Maps,
+// const menu = [...game.team1, ...game.team2];
+// for (const item of menu) console.log(item);
 
-for (const ds of game.team2) console.log(ds);
+// for (const ds of game.team2) console.log(ds);
