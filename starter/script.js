@@ -572,5 +572,11 @@ newArrays.set('');
 console.log(newArrays);
 console.log(be);
 
-const ds = new Set('Mukhammadazis');
+const sd = new Set('Mukhammadaziz');
+const ds = new Set(['Mukhammadaziz', 'pizza']);
 console.log(ds);
+console.log(ds.has('pizza')); // we can check if the ds array here has a value named 'pizza'
+ds.add('jimmi');
+console.log(ds);
+console.log(sd.add('alan'));
+console.log(sd.add('Jimmi'));
