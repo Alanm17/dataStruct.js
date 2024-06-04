@@ -566,3 +566,11 @@ be.set('Phone', Number('01034275553'));
 console.log(be.get('Name'));
 console.log(be.get('Location'));
 console.log(be.get('Phone'));
+
+let newArrays = new Map();
+newArrays.set('');
+console.log(newArrays);
+console.log(be);
+
+const ds = new Set('Mukhammadazis');
+console.log(ds);
