@@ -580,3 +580,52 @@ ds.add('jimmi');
 console.log(ds);
 console.log(sd.add('alan'));
 console.log(sd.add('Jimmi'));
+
+const arrA = new Set(['ALAN']);
+arrA.add('JOHN');
+console.log(arrA);
+arrA.delete('ALAN'); // using delete method to delete desired value from array
+console.log(arrA);
+arrA.clear();
+console.log(arrA);
+const Obj = new Set();
+const a = {
+  Alan: 'JOhn',
+};
+Obj.add(a);
+console.log(Obj);
+
+console.log(Obj.add(['Aln', 'jake']));
+
+console.log(Obj);
+for (const er of Obj.entries()) {
+  console.log(er);
+}
+
+const maps = new Map();
+maps
+  .set('name', 'Turkish Kebab')
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'Open')
+  .set(false, 'Closed');
+console.log(maps.get(true));
+console.log(maps.get(false));
+console.log(maps.get('categories'));
+
+const time = 21;
+console.log(maps.get(time > maps.get('open') && time < maps.get('close'))); // shu joyda etibor beradigan bolsak . time > maps.get open 11 ekan va 21 undan kattaligi uchun operator true qaytaradi va biz .set(true Open) dep olganimiz uchun true dagi value qaytdi agar false bolsa closed qaytgan bolar edi bu yerda logic kerak boladi. bu 'having booleans as map keys' deyiladi
+
+const question = new Map([
+  ['question', 'which one is the best of all'],
+  [1, 'C'],
+  [2, 'React native'],
+  [3, 'React.js'],
+  [4, 'Javascript'], ///////
+  ['correct', 4], ///////
+  [true, 'correct'], //👆
+  [false, 'try one more time'],
+]);
+
+console.log(question.get(question.get(true, 'correct'))); //highlighted 👆 .
