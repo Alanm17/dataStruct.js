@@ -637,7 +637,7 @@ for (const [key, value] of question) {
   if (typeof key === 'number') console.log(key, value);
 }
 
-const answers = Number(prompt('Your answer'));
+const answers = 4;
 console.log(answers);
 answers === 4
   ? console.log(question.get(true))
