@@ -700,3 +700,82 @@ console.log(airline.lastIndexOf('s')); // to get the last order number in which 
 console.log(airline.indexOf('k')); // to get the order of the first letter used in an array or string variable
 
 console.log(airline.indexOf('airways')); // we can use full text also
+
+console.log(airline.slice(7, airline.length)); // tan airways
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // takes the ending ex: 'Uzbekistan airways' : airways
+console.log(airline.slice(0, airline.indexOf(' '))); // takes the starting ex: 'Uzbekistan airways' : Uzbekistan
+console.log(airline.slice(-4)); // to count from ending ex:airways slice(-4) === ways
+
+const checkMiddleSeat = function (seat) {
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat💺😬 ');
+  else console.log(`You got seat ${s}`);
+};
+checkMiddleSeat('11B');
+checkMiddleSeat('11C');
+checkMiddleSeat('11E');
+
+console.log(airline.toLowerCase()); // converting to lowercase
+console.log(airline.toUpperCase()); // Uppercase
+
+const naMe = 'aLan';
+console.log(naMe.slice(-naMe.length + 1));
+const alan = naMe.toLowerCase(0);
+const correctOne = alan[0].toUpperCase() + alan.slice(-3);
+console.log(correctOne);
+
+/// name corrector to upper to lower case form
+const nameCorrector = function (a) {
+  const b = a.toLowerCase();
+  const correctForm = b[0].toUpperCase() + b.slice(-b.length + 1);
+  const corrected = correctForm.trim(); // trim removes empty characters from beginning and end of the string
+  console.log(corrected);
+};
+
+nameCorrector('  henasjT  \n'); //henasjT
+
+const r = new Map([
+  ['sdsdsds', 'sdsd'],
+  [1, 'asas'],
+]);
+r.clear();
+console.log(r);
+const announcment = 'All people go to work .';
+// announcment[20].delete();
+
+const anno = announcment
+  .replaceAll('go', 'come')
+  .replaceAll('work', 'work please')
+  .replace(/All/g, 'Highlighted'); // we can also use /string/g to select all strings with this name instead of replace'All'
+
+// with using 'replace','replaceAll' method here , we can replace strings we want or change them completely
+// regular expression
+// const ann = anno.replace(/All/g, 'Highlighted');
+console.log(anno);
+
+//booleans
+
+const planen = 'B787 Dasktop';
+console.log(planen.includes('8')); //true // with includes(string) we can know if the string has '8' if yes it returns true if not false
+
+console.log(planen.includes('AI')); //false
+console.log(planen.includes('B')); //true
+
+console.log(planen.startsWith('B7') || planen.endsWith('top')); //true
+
+//with startsWith and endsWith we can select from beginning or the end of string and know . if yes it returns true or false if not
+
+const checkBaggage = function (items) {
+  const loweredLetter = items.toLowerCase();
+  if (loweredLetter.includes('knife') || loweredLetter.includes('gun')) {
+    console.log(
+      'Make sure you read our guidelines as its Not Allowed to carry knife or gun in board'
+    );
+  } else {
+    console.log("Thank you , Hope you'll enjoy the flight");
+  }
+};
+checkBaggage('i have some Knifes and Food');
+checkBaggage('I got only Chocolate for my daughter');
+checkBaggage(' snacks for baby');
+checkBaggage(' guns only');
