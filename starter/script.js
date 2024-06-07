@@ -608,11 +608,13 @@ maps
   .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
   .set('open', 11)
   .set('close', 23)
+  .set('close', 21)
   .set(true, 'Open')
   .set(false, 'Closed');
 console.log(maps.get(true));
 console.log(maps.get(false));
 console.log(maps.get('categories'));
+console.log(maps.get('close'));
 
 const time = 21;
 console.log(maps.get(time > maps.get('open') && time < maps.get('close'))); // shu joyda etibor beradigan bolsak . time > maps.get open 11 ekan va 21 undan kattaligi uchun operator true qaytaradi va biz .set(true Open) dep olganimiz uchun true dagi value qaytdi agar false bolsa closed qaytgan bolar edi bu yerda logic kerak boladi. bu 'having booleans as map keys' deyiladi
@@ -646,3 +648,55 @@ answers === 4
 console.log(question.get(answers));
 
 console.log(question.get(question.get('correct') === answers));
+
+console.log(...hourMap.values()); // the reason why we are using [] brackets is to get the map keys and values into an array . if we do not do this they will be shown speparately
+
+//challange 3
+
+const gameEvents = new Map([
+  [17, 'GOAL'],
+  [36, 'Substitution'],
+  [47, 'GOAL'],
+  [61, 'Substitution'],
+  [64, 'Yellow card'],
+  [69, 'Red card'],
+  [170, 'Substitution'],
+  [72, 'Substitution'],
+  [176, 'GOAL'],
+  [80, 'GOAL'],
+  [92, 'Yellow card'],
+]);
+const eVent = [...new Set(gameEvents.values())];
+console.log(eVent);
+const events = new Map(gameEvents);
+
+events.delete(64);
+console.log(events);
+// console.log(events.delete(64));
+console.log(
+  events.size
+    ? console.log(
+        `an event happened on avarage between ${90 / events.size} minutes`
+      )
+    : console.log(` an event happened every ${90 / events.size} minutes`)
+);
+const tiMe = [...events.keys()].pop(); // we can use pop() to get the last element from an array
+console.log(tiMe);
+for (const [key, value] of events) {
+  if (key <= 45) {
+    console.log(`[first half] ${key}: ${value}`);
+  } else {
+    console.log(`[second half] ${key}: ${value}`);
+  }
+}
+
+const airline = 'uzbekistan airways';
+const plane = 'B787';
+console.log('B787'.length);
+
+console.log(airline[2]);
+console.log('hello'[3]);
+console.log(airline.lastIndexOf('s')); // to get the last order number in which the letter is used .
+console.log(airline.indexOf('k')); // to get the order of the first letter used in an array or string variable
+
+console.log(airline.indexOf('airways')); // we can use full text also
