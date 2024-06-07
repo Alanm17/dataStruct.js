@@ -629,3 +629,20 @@ const question = new Map([
 ]);
 
 console.log(question.get(question.get(true, 'correct'))); //highlighted 👆 .
+
+const hourMap = new Map(Object.entries(openingHours));
+console.log(hourMap);
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(key, value);
+}
+
+const answers = Number(prompt('Your answer'));
+console.log(answers);
+answers === 4
+  ? console.log(question.get(true))
+  : console.log(question.get(false));
+
+console.log(question.get(answers));
+
+console.log(question.get(question.get('correct') === answers));
