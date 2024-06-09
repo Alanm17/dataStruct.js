@@ -743,42 +743,42 @@ const restaurant = {
 // const announcment = 'All people go to work .';
 // // announcment[20].delete();
 
-const anno = announcment
-  .replaceAll('go', 'come')
-  .replaceAll('work', 'work please')
-  .replace(/All/g, 'Highlighted'); // we can also use /string/g to select all strings with this name instead of replace'All'
+// const anno = announcment
+//   .replaceAll('go', 'come')
+//   .replaceAll('work', 'work please')
+//   .replace(/All/g, 'Highlighted'); // we can also use /string/g to select all strings with this name instead of replace'All'
 
 // with using 'replace','replaceAll' method here , we can replace strings we want or change them completely
 // regular expression
 // const ann = anno.replace(/All/g, 'Highlighted');
-console.log(anno);
+// console.log(anno);
 
 //booleans
 
-const planen = 'B787 Dasktop';
-console.log(planen.includes('8')); //true // with includes(string) we can know if the string has '8' if yes it returns true if not false
+// const planen = 'B787 Dasktop';
+// console.log(planen.includes('8')); //true // with includes(string) we can know if the string has '8' if yes it returns true if not false
 
-console.log(planen.includes('AI')); //false
-console.log(planen.includes('B')); //true
+// console.log(planen.includes('AI')); //false
+// console.log(planen.includes('B')); //true
 
-console.log(planen.startsWith('B7') || planen.endsWith('top')); //true
+// console.log(planen.startsWith('B7') || planen.endsWith('top')); //true
 
-//with startsWith and endsWith we can select from beginning or the end of string and know . if yes it returns true or false if not
+// //with startsWith and endsWith we can select from beginning or the end of string and know . if yes it returns true or false if not
 
-const checkBaggage = function (items) {
-  const loweredLetter = items.toLowerCase();
-  if (loweredLetter.includes('knife') || loweredLetter.includes('gun')) {
-    console.log(
-      'Make sure you read our guidelines as its Not Allowed to carry knife or gun in board'
-    );
-  } else {
-    console.log("Thank you , Hope you'll enjoy the flight");
-  }
-};
-checkBaggage('i have some Knifes and Food');
-checkBaggage('I got only Chocolate for my daughter');
-checkBaggage(' snacks for baby');
-checkBaggage(' guns only');
+// const checkBaggage = function (items) {
+//   const loweredLetter = items.toLowerCase();
+//   if (loweredLetter.includes('knife') || loweredLetter.includes('gun')) {
+//     console.log(
+//       'Make sure you read our guidelines as its Not Allowed to carry knife or gun in board'
+//     );
+//   } else {
+//     console.log("Thank you , Hope you'll enjoy the flight");
+//   }
+// };
+// checkBaggage('i have some Knifes and Food');
+// checkBaggage('I got only Chocolate for my daughter');
+// checkBaggage(' snacks for baby');
+// checkBaggage(' guns only');
 
 //split and join
 console.log('kholdarov Alan'.split('z')); // with split method we can delete the string letter or string by selecting with split('ndbmnd')
@@ -790,3 +790,26 @@ console.log(lastName);
 const Dj = 'jam+shid'.split('+');
 // Dj.split();
 console.log(Dj);
+
+// console.log(Dj.join(' '));
+
+const nameUpperCase = function (name) {
+  const names = name.split(' ');
+  const UpperCase = [];
+
+  for (const f of names) {
+    // UpperCase.push(f[0].toUpperCase() + f.slice(1));
+    UpperCase.push(f.replace(f[0], f[0].toUpperCase())); // as we can see here , we have to give the replace method first what we want to replace by selecting it first '(f[0],' and after we can start doing what we wanna change or replace.'f[0].toUpperCase()))'
+  }
+  console.log(UpperCase.join(' '));
+};
+
+nameUpperCase('mukhammadaziz kholdarov');
+nameUpperCase('samandar kodirov');
+nameUpperCase('fayzullev abbos');
+nameUpperCase('mukhammadaziz kholdarov');
+
+const Start = 'Muhammad Aziz';
+
+// console.log(Start.padStart(12, '+'));
+console.log(Start.padStart(22, '+').padEnd(31, '+'));
