@@ -718,11 +718,11 @@ const restaurant = {
 // console.log(airline.toLowerCase()); // converting to lowercase
 // console.log(airline.toUpperCase()); // Uppercase
 
-// const naMe = 'aLan';
+const naMe = 'aLan';
 // console.log(naMe.slice(-naMe.length + 1));
-// const alan = naMe.toLowerCase(0);
-// const correctOne = alan[0].toUpperCase() + alan.slice(-3);
-// console.log(correctOne);
+const alan = naMe.toLowerCase(0);
+const correctOne = alan[0].toUpperCase() + alan.slice(-alan.length + 3);
+console.log(correctOne);
 
 // /// name corrector to upper to lower case form
 // const nameCorrector = function (a) {
@@ -799,7 +799,7 @@ const nameUpperCase = function (name) {
 
   for (const f of names) {
     // UpperCase.push(f[0].toUpperCase() + f.slice(1));
-    UpperCase.push(f.replace(f[0], f[0].toUpperCase())); // as we can see here , we have to give the replace method first what we want to replace by selecting it first '(f[0],' and after we can start doing what we wanna change or replace.'f[0].toUpperCase()))'
+    UpperCase.push(f.replace(f[0], f[0].toUpperCase())); // as we can see here , we have to give the replace method first what we want to replace by selecting it first '(f[0],' and after we can start doing what we wanna change or replace.'f[0].toUpperCase()))' and with push() method we are adding it to the array
   }
   console.log(UpperCase.join(' '));
 };
@@ -813,3 +813,97 @@ const Start = 'Muhammad Aziz';
 
 // console.log(Start.padStart(12, '+'));
 console.log(Start.padStart(22, '+').padEnd(31, '+'));
+
+function nameCorrect(nameIn) {
+  const namess = nameIn.split(' ');
+  const ansWer = [];
+  for (const datas of namess) {
+    ansWer.push(datas.replace(datas[0], datas[0].toUpperCase()));
+  }
+  console.log(ansWer.join(' '));
+}
+
+nameCorrect('mukhammadaziz kholdarov');
+
+let chel = 'Muhammadaziz kholdarov'.split('v');
+chel = new Set(['Alan', 'Alan', 'Alan']);
+
+console.log(chel);
+// let number = 12431231212331;
+// const stringNum = number + '';
+// stringNum.slice(stringNum.length);
+// console.log(stringNum);
+
+const maskTheNum = function (number) {
+  const stringNum = `${number}`;
+  const last = stringNum.slice(-4);
+  const theLast = last.padStart(stringNum.length, '*');
+  return theLast;
+};
+console.log(maskTheNum(2342342));
+
+function rep(n) {
+  // const b = n.repeat(n);
+  console.log(`there are ${n} people waiting ${'🍩'.repeat(n)}`);
+}
+rep(4);
+rep(12);
+rep(3);
+rep(13);
+
+//challange
+
+// const newL = [];
+// const ansWer = [];
+// const smth = 'Alan_Shkers';
+// newL.push(smth.split('_'));
+// console.log(newL);
+// for (const k of newL) {
+//   ansWer.push(k.replace(k[0], k[0].toUpperCase()));
+// }
+// console.log(ansWer);
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+// const catterB = function (name1) {
+//   const k = name1.toLowerCase();
+//   const name2 = [];
+//   name2.push(k.split('_'));
+//   const name3 = [];
+//   for (const [a, b] of name2) {
+//     name3.push(a.replace(a[0], a[0].toLowerCase()));
+//     name3.push(b.replace(b[0], b[0].toUpperCase()));
+//   }
+//   return name3.join('');
+// };
+// document.querySelector('button').addEventListener('click', function () {
+//   const textt = document.querySelector('textarea').value;
+//   const text = textt.split('\n');
+//   const correctFrom = catterB(text);
+//   console.log(correctFrom);
+//   document.querySelector('.text').value = correctFrom;
+// });
+document.querySelector('button').addEventListener('click', function () {
+  const textt = document.querySelector('textarea').value;
+  const text = textt.split('\n');
+  // console.log(text);
+  for (const [i, row] of text.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const theFinal = `${first} ${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${theFinal.padEnd(20)} ${'✅'.repeat(i + 1)}`);
+  }
+});
+
+// document.querySelector('button').addEventListener('click', function () {
+//   const text = document.querySelector('textarea').value;
+//   const rows = text.split('\n');
+//   for (const [i, row] of rows.entries()) {
+//     const [first, second] = row.toLowerCase().trim().split('_');
+//     console.log(first, second);
+//     const output = first + second.replace(second[0], second[0].toUpperCase());
+//     console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+//   }
+// });
