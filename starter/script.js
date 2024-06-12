@@ -865,37 +865,37 @@ rep(13);
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 
-// const catterB = function (name1) {
-//   const k = name1.toLowerCase();
-//   const name2 = [];
-//   name2.push(k.split('_'));
-//   const name3 = [];
-//   for (const [a, b] of name2) {
-//     name3.push(a.replace(a[0], a[0].toLowerCase()));
-//     name3.push(b.replace(b[0], b[0].toUpperCase()));
-//   }
-//   return name3.join('');
-// };
-// document.querySelector('button').addEventListener('click', function () {
-//   const textt = document.querySelector('textarea').value;
-//   const text = textt.split('\n');
-//   const correctFrom = catterB(text);
-//   console.log(correctFrom);
-//   document.querySelector('.text').value = correctFrom;
-// });
+const catterB = function (name1) {
+  const k = name1.toLowerCase();
+  const name2 = [];
+  name2.push(k.split('_'));
+  const name3 = [];
+  for (const [a, b] of name2) {
+    name3.push(a.replace(a[0], a[0].toLowerCase()));
+    name3.push(b.replace(b[0], b[0].toUpperCase()));
+  }
+  return name3.join('');
+};
 document.querySelector('button').addEventListener('click', function () {
   const textt = document.querySelector('textarea').value;
   const text = textt.split('\n');
-  // console.log(text);
-  for (const [i, row] of text.entries()) {
-    const [first, second] = row.toLowerCase().trim().split('_');
-    const theFinal = `${first} ${second.replace(
-      second[0],
-      second[0].toUpperCase()
-    )}`;
-    console.log(`${theFinal.padEnd(20)} ${'✅'.repeat(i + 1)}`);
-  }
+  const correctFrom = catterB(text);
+  console.log(correctFrom);
+  document.querySelector('.text').value = correctFrom;
 });
+// document.querySelector('button').addEventListener('click', function () {
+//   const textt = document.querySelector('textarea').value;
+//   const text = textt.split('\n');
+//   // console.log(text);
+//   for (const [i, row] of text.entries()) {
+//     const [first, second] = row.toLowerCase().trim().split('_');
+//     const theFinal = `${first} ${second.replace(
+//       second[0],
+//       second[0].toUpperCase()
+//     )}`;
+//     console.log(`${theFinal.padEnd(20)} ${'✅'.repeat(i + 1)}`);
+//   }
+// });
 
 // document.querySelector('button').addEventListener('click', function () {
 //   const text = document.querySelector('textarea').value;
@@ -907,3 +907,18 @@ document.querySelector('button').addEventListener('click', function () {
 //     console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
 //   }
 // });
+
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+for (const flight of flights.split('+')) {
+  const [how, from, to, time] = flight.split(';');
+  const output = `${how.startsWith('_Delayed') ? '🟤' : ' '}${how.replaceAll(
+    '_',
+    ' '
+  )} from ${from.slice(0, 3).toUpperCase()} to ${to
+    .slice(0, 3)
+    .toUpperCase()} (${time.replace(':', 'h')})`.padStart(36);
+  // const finalOutput = output.includes('Delayed') ? `🟤` : ' ';
+  console.log(output);
+}
